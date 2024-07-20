@@ -6,8 +6,5 @@ spells = [
     "Nox!",
     "Lumos!",
 ]
-disaster = True
-if disaster:
-    print('Да')
-else:
-    print("НЕТ")
+strok = 'qwertyuiop'
+print('\t#\n'.join(spells))
