@@ -107,7 +107,7 @@ def print_global():
 
 
 def test(func):
-    print('Старт')
+    # print('Старт')
     def new_function(*args):
         print('Енд')
         return func(*args)        
@@ -117,8 +117,78 @@ def test(func):
 def add_ints(a,b):
     return a+b
 
-print(add_ints(3,5))
+# print(add_ints(3,5))
 
 
 # Объекты и классы
 
+class Cat():
+    def __init__(self,name):
+        self.name = name
+    
+
+a_cat = Cat('Grindolf')
+another_cat = Cat('Uebook')
+
+a_cat.age = 3
+
+
+# print(a_cat.name, a_cat.age)
+
+class Car():# Родительский класс
+    def exclaim(self):
+        print(' I m a Car')
+        
+        
+
+class Yogo(Car): # наследование родительского класса
+    def exclaim(self):
+        print('А вот херушки я другой')
+    
+    def need_a_push(self):
+        print('Я вообщето я малолитражка')
+
+
+
+
+give_me_a_car =  Car() 
+give_me_a_yogo =  Yogo()
+
+# print(give_me_a_car.exclaim())
+# print(give_me_a_yogo.need_a_push())
+
+class Person():
+    def __init__(self, name):
+        self.name = name.capitalize()
+        
+class EmailPerson(Person):
+    def __init__(self, name, email):
+        super().__init__(name)
+        self.email = email
+
+
+
+bob = EmailPerson('bob slitsky', 'test@mail.ru')
+print(bob.name) 
+print(bob.email) 
+
+class MDPerson(Person):
+    def __init__(self, name):
+        self.name = "Doctor " + name
+
+class JDPerson(Person):
+    def __init__(self,name):
+        self.name = name + " Адвокат"
+
+
+person = Person('Fudd')
+doctor = MDPerson('Aybolit')
+lawuer = JDPerson('Rick')
+
+print(person.name)
+print(doctor.name)
+print(lawuer.name)
+
+# print(a_cat, '\n', another_cat)
+
+# Геттеры и сеттеры
