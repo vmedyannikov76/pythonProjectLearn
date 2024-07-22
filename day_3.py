@@ -169,8 +169,8 @@ class EmailPerson(Person):
 
 
 bob = EmailPerson('bob slitsky', 'test@mail.ru')
-print(bob.name) 
-print(bob.email) 
+# print(bob.name) 
+# print(bob.email) 
 
 class MDPerson(Person):
     def __init__(self, name):
@@ -185,10 +185,41 @@ person = Person('Fudd')
 doctor = MDPerson('Aybolit')
 lawuer = JDPerson('Rick')
 
-print(person.name)
-print(doctor.name)
-print(lawuer.name)
+# print(person.name)
+# print(doctor.name)
+# print(lawuer.name)
 
 # print(a_cat, '\n', another_cat)
 
 # Геттеры и сеттеры
+class Duck():
+    def __init__(self, input_name):
+        self.hidden_name = input_name
+        
+    def get_name(self):
+        print('Это геттер')
+        return self.hidden_name
+    
+    def set_name(self, input_name):
+        print('Это сеттер')
+        self.hidden_name = input_name
+        
+    name = property(get_name, set_name)
+        
+don = Duck('Donald')
+don.set_name('BOB')
+# print(don.get_name())
+# print(don.hidden_name)
+# print(don.name)
+
+class Circle():
+    def __init__(self, radius):
+        self.radius = radius
+        
+    @property    
+    def diametr(self):
+        return 2*  self.radius
+    
+a = Circle(5)
+print(a.radius)
+print(a.diametr)
