@@ -61,3 +61,64 @@ range = my_range(1,5)
 
 # Декоратор принимает на вход одну функцию и возвращает другую не затрагивая код первой
 
+def document_it(func):
+    def new_function(*args, **kwargs):
+        print('Название функции', func.__name__)
+        print('Позиционные аргументы', args)
+        print('Именованные аргументы', kwargs)
+        result = func(*args, **kwargs)
+        print('Результат', result)
+        return result
+    return new_function
+
+def square_it(func):
+    def new_function(*args, **kwargs):
+        resuit = func(*args, **kwargs)
+        return resuit * resuit
+    return new_function
+
+
+@square_it
+@document_it
+def add_ints(a,b):
+    return a+b
+
+# print(add_ints(3,5))
+
+# Создание декоратора в ручную
+# coller_add_ints = document_it(add_ints)
+# coller_add_ints(3,5)
+
+
+# Область видимости переменных
+
+animal = 'fruitbat'
+def print_global():
+    animal = 'qqqq'
+    # print('внутренняя переменная за пределами функций', animal)
+    # print(locals())
+    
+# print_global()
+# print(globals())
+# print(animal)
+# def dive():
+#     return dive()
+# dive()
+
+
+def test(func):
+    print('Старт')
+    def new_function(*args):
+        print('Енд')
+        return func(*args)        
+    return new_function
+
+@test
+def add_ints(a,b):
+    return a+b
+
+print(add_ints(3,5))
+
+
+# Объекты и классы
+
