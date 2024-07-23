@@ -313,3 +313,24 @@ first = Words('ha')
 
 print(first)
 # first
+
+class Bill():
+    def __init__(self, description):
+        self.description = description
+        
+class Tail():
+    def __init__(self, length):
+        self.length = length
+        
+class Duck():
+    def __init__(self, bill, tail):
+        self.bill = bill
+        self.tail = tail
+        
+    def about(self):
+        print('Это утка, ее описание: ', self.bill.description, self.tail.length)
+
+a_tail = Tail('long')
+a_bill = Bill('orange')
+duck = Duck(a_bill, a_tail)
+duck.about()
