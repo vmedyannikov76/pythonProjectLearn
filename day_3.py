@@ -221,5 +221,95 @@ class Circle():
         return 2*  self.radius
     
 a = Circle(5)
-print(a.radius)
-print(a.diametr)
+# print(a.radius)
+# print(a.diametr)
+
+# Методы класса - влияют на все объекты
+
+class As():
+    count = 0
+    def __init__(self):
+        As.count += 1
+    def exclamp(self):
+        print('Я класс А')
+        
+    @classmethod
+    def kids(cls):
+        print(f'Это количество дочерних классов: {cls.count}')
+            
+easy_a = As()
+easy_b = As()
+easy_c = As()
+As.kids()
+
+class CoyoteWeapon():
+    @staticmethod
+    def commercial():
+        print('Какойто статический метод')
+
+
+CoyoteWeapon.commercial()
+
+class Quote():
+    def __init__(self, person, words):
+        self.person = person
+        self.words = words
+        
+    def who(self):
+        return self.person
+    
+    def says(self):
+        return self.words + ' ###'
+    
+class Question(Quote):
+    def says(self):
+        return self.words + '???'
+    
+class ExclamationQote(Quote):
+    def says(self):
+        return self.words + ' @@@@'
+    
+hanter = Quote('Kanalya', 'я наследник класса')
+print(hanter.who(), hanter.says())
+
+hanter1 = Question('Kanalya', 'я наследник класса')
+print(hanter1.who(), hanter1.says())
+
+hanter2 = ExclamationQote('Kanalya', 'я наследник класса')
+print(hanter2.who(), hanter2.says())
+
+class BabblinBrook():
+    def who(self):
+        return 'Brok'
+    
+    def says(self):
+        return 'Babble'
+    
+brook = BabblinBrook()
+
+def who_says(obj):
+    print(obj.who(), obj.says())
+    
+who_says(hanter)
+who_says(hanter1)
+who_says(hanter2)
+who_says(brook)
+
+class Words():
+    def __init__(self,text):
+        self.text = text
+        
+    def __eq__(self, text2): #магический метод сравнения
+        return self.text.lower() == text2.text.lower()
+    
+    def __str__(self) -> str:
+        return self.text
+    
+    def __repr__(self) -> str:
+        return self.text
+    
+first = Words('ha')
+
+
+print(first)
+# first
